@@ -25,28 +25,20 @@ YELLOW = (255, 255, 0)
 def main():
     run = True
 
-    # Just to demonstration (will be removed later)
-    gearsVar = 1
-
     clock = pygame.time.Clock()
     while run:
         clock.tick(FPS)
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
-                # Just to demonstration (will be removed later)
-                if event.key == pygame.K_RIGHT:
-                    gearsVar += 1
-                if event.key == pygame.K_LEFT:
-                    gearsVar -= 1
                 if event.key == pygame.K_w:
                     run = False
 
-        draw_window(gearsVar)
+        draw_window()
 
     pygame.display.quit()
 
 
-def draw_window(gearsVar):
+def draw_window():
     WINDOW.fill(BLACK)
 
     # Gear Widget
