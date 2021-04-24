@@ -29,7 +29,7 @@ class SteeringWheelPage(Page):
         topRow = Row(WINDOW, 0, 0, [
             # Gear Widget
             GearDisplay(WINDOW, WIDTH//2, HEIGHT//6, 0, HEIGHT//6, \
-                Colors.WHITE, Colors.WHITE, 8, 5),
+                Colors.WHITE, Colors.WHITE, 7, 5),
 
             # LeftHeaderBox Widget     
             HeaderBox(WINDOW, 10, 10, WIDTH//3, HEIGHT//3, \
