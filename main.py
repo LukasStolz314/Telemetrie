@@ -11,7 +11,7 @@ pygame.font.init()
 # Set window settings
 WIDTH, HEIGHT = 700, 350
 FPS = 20
-WINDOW = pygame.display.set_mode((WIDTH, HEIGHT), pygame.NOFRAME)
+WINDOW = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 pygame.display.set_caption("Formel 1 Telemetrie")
 
 # Colors
