@@ -7,6 +7,7 @@ from PygameWidgets.Widgets.ThrottleBar import ThrottleBar
 from PygameWidgets.Widgets.HeaderBox import HeaderBox
 from PygameWidgets.Widgets.Label import Label
 from PygameWidgets.Widgets.ProgressBar import ProgressBar
+from PygameWidgets.Widgets.EngineSpeed import EngineSpeed
 import Utils.Colors as Colors
 
 class SteeringWheelPage(Page):
@@ -14,7 +15,7 @@ class SteeringWheelPage(Page):
     def __init__(this, window):
         super().__init__(window, "Steering Wheel")
     
-    def buildPage(this):
+    def buildPage(this, test):
         pageWidgetList = []
 
         WINDOW = this.window
@@ -40,6 +41,9 @@ class SteeringWheelPage(Page):
                  Colors.BLACK, Colors.WHITE, rightHeaderBoxValues, 2, 5, HEIGHT//12),
         ])    	
         pageWidgetList.append(topRow)
+
+        eng = EngineSpeed(WINDOW, WIDTH//2-700, topRow.bottomPosition + 50, 0, 0, test)
+        eng.draw()
 
         midColumn = Column(WINDOW, WIDTH//2, topRow.bottomPosition + HEIGHT//12, [
             # Delta Widget

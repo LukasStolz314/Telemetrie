@@ -13,6 +13,9 @@ pygame.display.set_caption("Formel 1 Telemetrie")
 def main():
     run = True
 
+    #test
+    test = 0
+
     clock = pygame.time.Clock()
     while run:
         clock.tick(FPS)
@@ -20,15 +23,19 @@ def main():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_w:
                     run = False
+                if event.key == pygame.K_DOWN:
+                    test -= 1
+                if event.key == pygame.K_UP:
+                    test += 1
 
-        draw_window()
+        draw_window(test)
     
     pygame.display.quit()
 
 
-def draw_window():
+def draw_window(test):
     page1 = SteeringWheelPage(WINDOW)
-    page1.buildPage()
+    page1.buildPage(test)
     page1.drawWidgets()
 
 
