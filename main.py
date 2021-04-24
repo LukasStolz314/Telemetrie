@@ -9,9 +9,9 @@ from pygame import Rect
 pygame.font.init()
 
 # Set window settings
-WIDTH, HEIGHT = 700, 350
 FPS = 20
 WINDOW = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+WIDTH, HEIGHT = pygame.display.get_window_size()
 pygame.display.set_caption("Formel 1 Telemetrie")
 
 # Colors
@@ -32,14 +32,14 @@ def main():
     while run:
         clock.tick(FPS)
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                run = False
-
-            # Just to demonstration (will be removed later)
+            if event.type == pygame.KEYDOWN:
+                # Just to demonstration (will be removed later)
                 if event.key == pygame.K_RIGHT:
                     gearsVar += 1
                 if event.key == pygame.K_LEFT:
                     gearsVar -= 1
+                if event.key == pygame.K_w:
+                    run = False
 
         draw_window(gearsVar)
 
