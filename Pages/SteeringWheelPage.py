@@ -13,11 +13,9 @@ import Utils.Colors as Colors
 class SteeringWheelPage(Page):
 
     def __init__(this, window):
-        super().__init__(window, "Steering Wheel")
+        super().__init__(window, "Steering Wheel", [])
     
-    def buildPage(this, test):
-        pageWidgetList = []
-
+    def build(this):
         WINDOW = this.window
         WIDTH = this.window.get_width()
         HEIGHT = this.window.get_height()
@@ -40,9 +38,9 @@ class SteeringWheelPage(Page):
             HeaderBox(WINDOW, WIDTH - 10 - WIDTH//3, 10, WIDTH//3, HEIGHT//3,\
                  Colors.BLACK, Colors.WHITE, rightHeaderBoxValues, 2, 5, HEIGHT//12),
         ])    	
-        pageWidgetList.append(topRow)
+        this.widgetList.append(topRow)
 
-        eng = EngineSpeed(WINDOW, WIDTH//2-700, topRow.bottomPosition + 50, 0, 0, test)
+        eng = EngineSpeed(WINDOW, WIDTH//2-700, topRow.bottomPosition + 50, 0, 0, 9)
         eng.draw()
 
         midColumn = Column(WINDOW, WIDTH//2, topRow.bottomPosition + HEIGHT//12, [
@@ -58,7 +56,7 @@ class SteeringWheelPage(Page):
             ProgressBar(WINDOW, 0, 2 * HEIGHT//6, WIDTH//1.1, HEIGHT//50,\
                  Colors.BLACK, Colors.YELLOW, 50)
         ], HEIGHT//3)
-        pageWidgetList.append(midColumn)
+        this.widgetList.append(midColumn)
 
         bottomRow = Row(WINDOW, WIDTH//3.39, midColumn.bottomPosition + 1.5*(HEIGHT//12), [
             # D Widget
@@ -69,6 +67,4 @@ class SteeringWheelPage(Page):
             ProgressBar(WINDOW, WIDTH - WIDTH//1.695, 0, WIDTH//2.7, HEIGHT//50,\
                 Colors.BLACK, Colors.WHITE, 60),
         ])    	
-        pageWidgetList.append(bottomRow)
-
-        this.widgets = pageWidgetList
+        this.widgetList.append(bottomRow)

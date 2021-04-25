@@ -1,5 +1,6 @@
 import pygame
 from Pages.SteeringWheelPage import SteeringWheelPage
+from Pages.TyreTemperaturePage import TyreTemperaturePage
 from pygame import Rect
 
 pygame.font.init()
@@ -10,11 +11,13 @@ WINDOW = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 WIDTH, HEIGHT = pygame.display.get_window_size()
 pygame.display.set_caption("Formel 1 Telemetrie")
 
+pageList = [SteeringWheelPage(WINDOW), TyreTemperaturePage(WINDOW)]
+
 def main():
     run = True
 
     #test
-    test = 0
+    pageIndex = 0
 
     clock = pygame.time.Clock()
     while run:
@@ -24,19 +27,19 @@ def main():
                 if event.key == pygame.K_w:
                     run = False
                 if event.key == pygame.K_DOWN:
-                    test -= 1
+                    pageIndex -= 1
                 if event.key == pygame.K_UP:
-                    test += 1
+                    pageIndex += 1
 
-        draw_window(test)
+        draw_window(pageIndex)
     
     pygame.display.quit()
 
 
-def draw_window(test):
-    page1 = SteeringWheelPage(WINDOW)
-    page1.buildPage(test)
-    page1.drawWidgets()
+def draw_window(pageIndex):
+    if not pageIndex > len(pageList) - 1 and pageIndex >= 0:
+        pageList[pageIndex].build()
+        pageList[pageIndex].drawWidgets()
 
 
 if __name__ == "__main__":
