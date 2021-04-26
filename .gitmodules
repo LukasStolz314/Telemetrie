@@ -1,3 +1,6 @@
 [submodule "PygameWidgets"]
 	path = PygameWidgets
 	url = https://github.com/LukasStolz314/PygameWidgets.git
+[submodule "python-f1-2020-data"]
+	path = python-f1-2020-data
+	url = https://github.com/sh0uty/python-f1-2020-data
