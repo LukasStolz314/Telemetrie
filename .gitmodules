@@ -1,3 +1,6 @@
 [submodule "PygameWidgets"]
 	path = PygameWidgets
 	url = https://github.com/LukasStolz314/PygameWidgets.git
+[submodule "python_f1_packetreader"]
+	path = python_f1_packetreader
+	url = https://github.com/sh0uty/python_f1_packetreader
