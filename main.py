@@ -1,8 +1,6 @@
 import pygame
-import PygameWidgets.Provider as events
 from Pages.SteeringWheelPage import SteeringWheelPage
 from Pages.TyreTemperaturePage import TyreTemperaturePage
-from Pages.MenuPage import MenuPage
 from pygame import Rect
 
 pygame.font.init()
@@ -13,12 +11,11 @@ WINDOW = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 WIDTH, HEIGHT = pygame.display.get_window_size()
 pygame.display.set_caption("Formel 1 Telemetrie")
 
-pageList = [MenuPage(WINDOW), SteeringWheelPage(WINDOW), TyreTemperaturePage(WINDOW)]
+pageList = [SteeringWheelPage(WINDOW), TyreTemperaturePage(WINDOW)]
 
 def main():
     run = True
     pageIndex = 0
-    events.__init__()
     clock = pygame.time.Clock()
     while run:
         clock.tick(FPS)
@@ -26,12 +23,11 @@ def main():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_w:
                     run = False
-                if event.key == pygame.K_r:
-                    pageIndex = 0
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                events.mouseClickEvents.append(event)
+                if event.key == pygame.K_UP:
+                    pageIndex += 1 
+                if event.key == pygame.K_DOWN:
+                    pageIndex -= 1 
         pageIndex = draw_window(pageIndex)
-        events.mouseClickEvents = []
     
     pygame.display.quit()
 
