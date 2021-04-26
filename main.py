@@ -20,11 +20,9 @@ pageList = [SteeringWheelPage(WINDOW), TyreTemperaturePage(WINDOW)]
 def main():
     logging.basicConfig(format="%(levelname)s - %(message)s", level=logging.DEBUG)
 
-    #pr = packetreader.PacketReader('127.0.0.1', 20777)
-    #prThread = Thread(target=pr.run)
-    #prThread.start()
-
-    counter = 0
+    pr = packetreader.PacketReader('127.0.0.1', 20777)
+    prThread = Thread(target=pr.run)
+    prThread.start()
 
     logging.info("Packetreader thread started")
 
@@ -38,15 +36,13 @@ def main():
         clock.tick(FPS)
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_w:
+                if event.key == pygame.K_q:
                     run = False
                 if event.key == pygame.K_UP:
                     pageIndex += 1 
                 if event.key == pygame.K_DOWN:
                     pageIndex -= 1 
         pageIndex = draw_window(pageIndex)
-        print(counter)
-        counter += 1
     pygame.display.quit()
 
 
