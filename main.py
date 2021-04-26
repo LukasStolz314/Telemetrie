@@ -5,6 +5,7 @@ from pygame import Rect
 from python_f1_packetreader import packetreader
 from threading import Thread
 import logging
+import Utils.Colors as Colors
 
 pygame.font.init()
 
@@ -27,8 +28,11 @@ def main():
 
     logging.info("Packetreader thread started")
 
-    run = True
     pageIndex = 0
+    for page in pageList:
+        page.build()
+
+    run = True
     clock = pygame.time.Clock()
     while run:
         clock.tick(FPS)
@@ -48,13 +52,8 @@ def main():
 
 def draw_window(pageIndex):
     if not pageIndex > len(pageList) - 1 and pageIndex >= 0:
-        selector = pageList[pageIndex].build()
-        if selector != "" and selector != None:
-            for page in pageList:
-                if page.selector == selector:
-                    pageIndex = pageList.index(page)
-        else:
-            pageList[pageIndex].drawWidgets()
+        WINDOW.fill(Colors.BLACK)
+        pageList[pageIndex].drawWidgets()
     
     return pageIndex
 
