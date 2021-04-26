@@ -12,8 +12,10 @@ import Utils.Colors as Colors
 
 class SteeringWheelPage(Page):
 
+    selector = "Steering-Wheel"
+
     def __init__(this, window):
-        super().__init__(window, "Steering Wheel", [])
+        super().__init__(window, [])
     
     def build(this):
         WINDOW = this.window

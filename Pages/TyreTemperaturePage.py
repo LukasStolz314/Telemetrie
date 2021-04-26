@@ -7,8 +7,10 @@ import Utils.Colors as Colors
 
 class TyreTemperaturePage(Page):
 
+    selector = "Tyre-Temperature"
+
     def __init__(this, window):
-        super().__init__(window, "Tyre Temperature", [])
+        super().__init__(window, [])
 
     def build(this):
         WINDOW = this.window
