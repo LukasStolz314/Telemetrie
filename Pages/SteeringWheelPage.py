@@ -17,28 +17,28 @@ class SteeringWheelPage(Page):
     def __init__(this, window):
         super().__init__(window, [])
     
-    def build(this):
+    def build(this, pr):
         WINDOW = this.window
         WIDTH = this.window.get_width()
         HEIGHT = this.window.get_height()
 
         WINDOW.fill(Colors.BLACK)
 
-        leftHeaderBoxValues = ("298 KPH", ("L3", "P2"), ("12", "P2"))
-        rightHeaderBoxValues = ("14.235", ("100°C", "96°C"), ("94°C", "90°C"))
+        leftHeaderBoxValues = ("speed", "speed", "speed", "speed", "speed")
+        rightHeaderBoxValues = ("currentLapTime", "currentLapTime", "currentLapTime", "currentLapTime", "currentLapTime")
 
         topRow = Row(WINDOW, 0, 0, [
             # Gear Widget
             GearDisplay(WINDOW, WIDTH//2, HEIGHT//6, 0, HEIGHT//6, \
-                Colors.WHITE, Colors.WHITE, 7, 5),
+                Colors.WHITE, Colors.WHITE, "gear", pr, 5),
 
             # LeftHeaderBox Widget     
             HeaderBox(WINDOW, 10, 10, WIDTH//3, HEIGHT//3, \
-                Colors.BLACK, Colors.WHITE, leftHeaderBoxValues, 2, 5, HEIGHT//12),
+                Colors.BLACK, Colors.WHITE, leftHeaderBoxValues, pr, 2, 5, HEIGHT//12),
 
             # RightHeaderBox Widget
             HeaderBox(WINDOW, WIDTH - 10 - WIDTH//3, 10, WIDTH//3, HEIGHT//3,\
-                 Colors.BLACK, Colors.WHITE, rightHeaderBoxValues, 2, 5, HEIGHT//12),
+                 Colors.BLACK, Colors.WHITE, rightHeaderBoxValues, pr, 2, 5, HEIGHT//12),
         ])    	
         this.widgetList.append(topRow)
 

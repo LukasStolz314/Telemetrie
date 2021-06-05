@@ -12,7 +12,7 @@ class TyreTemperaturePage(Page):
     def __init__(this, window):
         super().__init__(window, [])
 
-    def build(this):
+    def build(this, pr):
         WINDOW = this.window
         WIDTH = this.window.get_width()
         HEIGHT = this.window.get_height()
