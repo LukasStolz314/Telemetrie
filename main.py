@@ -24,11 +24,13 @@ def main():
     prThread = Thread(target=pr.run)
     prThread.start()
 
+    print(vars(pr)['gear'])
+
     logging.info("Packetreader thread started")
 
     pageIndex = 0
     for page in pageList:
-        page.build()
+        page.build(pr)
 
     run = True
     clock = pygame.time.Clock()
@@ -39,15 +41,24 @@ def main():
                 if event.key == pygame.K_q:
                     run = False
                 if event.key == pygame.K_UP:
-                    pageIndex += 1 
+                    pr.ersStoreEnergy += 1
+                if event.key == pygame.K_LEFT:
+                    pr.gear += 1
                 if event.key == pygame.K_DOWN:
-                    pageIndex -= 1 
+                    pr.currentLapTime += 1
+                if event.key == pygame.K_RIGHT:
+                    pr.speed += 1
+                if event.key == pygame.K_SPACE:
+                    if pr.ersDeployMode == 2:
+                        pr.ersDeployMode = 0
+                    else:
+                        pr.ersDeployMode = 2
         pageIndex = draw_window(pageIndex)
     pygame.display.quit()
 
 
 def draw_window(pageIndex):
-    if not pageIndex > len(pageList) - 1 and pageIndex >= 0:
+    if pageIndex < len(pageList) - 1 and pageIndex >= 0:
         WINDOW.fill(Colors.BLACK)
         pageList[pageIndex].drawWidgets()
     
