@@ -8,6 +8,7 @@ from PygameWidgets.Widgets.HeaderBox import HeaderBox
 from PygameWidgets.Widgets.Label import Label
 from PygameWidgets.Widgets.ProgressBar import ProgressBar
 from PygameWidgets.Widgets.EngineSpeed import EngineSpeed
+from PygameWidgets.Widgets.OvertakeLabel import OvertakeLabel
 import Utils.Colors as Colors
 
 class SteeringWheelPage(Page):
@@ -42,31 +43,31 @@ class SteeringWheelPage(Page):
         ])    	
         this.widgetList.append(topRow)
 
-        eng = EngineSpeed(WINDOW, WIDTH//2-700, topRow.bottomPosition + 50, 0, 0, 9)
-        eng.draw()
+        # eng = EngineSpeed(WINDOW, WIDTH//2-700, topRow.bottomPosition + 50, 0, 0, "engineRPM", pr)
+        # eng.draw()
 
         midColumn = Column(WINDOW, WIDTH//2, topRow.bottomPosition + HEIGHT//12, [
             # Delta Widget
             Label(WINDOW, 0, 0, WIDTH//9, HEIGHT//10,\
-                 None, Colors.GREEN, "-0.002"),
+                 None, Colors.GREEN, "speed", pr),
 
             # Overtake Widget
-            Label(WINDOW, 0, HEIGHT//6, WIDTH//1.5, HEIGHT//20,\
-                 Colors.GREEN, Colors.WHITE, ("Overtake", Colors.GREEN)),
+            OvertakeLabel(WINDOW, 0, HEIGHT//6, WIDTH//1.5, HEIGHT//20,\
+                 Colors.GREEN, Colors.WHITE, "ersDeployMode", pr),
 
             # ERS Widget
             ProgressBar(WINDOW, 0, 2 * HEIGHT//6, WIDTH//1.1, HEIGHT//50,\
-                 Colors.BLACK, Colors.YELLOW, 50)
+                 Colors.BLACK, Colors.YELLOW, "ersStoreEnergy", pr)
         ], HEIGHT//3)
         this.widgetList.append(midColumn)
 
         bottomRow = Row(WINDOW, WIDTH//3.39, midColumn.bottomPosition + 1.5*(HEIGHT//12), [
             # D Widget
             ProgressBar(WINDOW, 0, 0, WIDTH//2.7, HEIGHT//50,\
-                Colors.BLACK, Colors.WHITE, 30),
+                Colors.BLACK, Colors.WHITE, "ersStoreEnergy", pr),
 
             # W Widget     
             ProgressBar(WINDOW, WIDTH - WIDTH//1.695, 0, WIDTH//2.7, HEIGHT//50,\
-                Colors.BLACK, Colors.WHITE, 60),
+                Colors.BLACK, Colors.WHITE, "ersStoreEnergy", pr),
         ])    	
         this.widgetList.append(bottomRow)
