@@ -41,11 +41,18 @@ def main():
                 if event.key == pygame.K_q:
                     run = False
                 if event.key == pygame.K_UP:
-                    pr.speed += 1
-                    print(pr.gear)
+                    pr.ersStoreEnergy += 1
+                if event.key == pygame.K_LEFT:
+                    pr.gear += 1
                 if event.key == pygame.K_DOWN:
                     pr.currentLapTime += 1
-                    print(pr.gear)
+                if event.key == pygame.K_RIGHT:
+                    pr.speed += 1
+                if event.key == pygame.K_SPACE:
+                    if pr.ersDeployMode == 2:
+                        pr.ersDeployMode = 0
+                    else:
+                        pr.ersDeployMode = 2
         pageIndex = draw_window(pageIndex)
     pygame.display.quit()
 
