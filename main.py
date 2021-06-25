@@ -24,8 +24,6 @@ def main():
     prThread = Thread(target=pr.run)
     prThread.start()
 
-    print(vars(pr)['gear'])
-
     logging.info("Packetreader thread started")
 
     pageIndex = 0
