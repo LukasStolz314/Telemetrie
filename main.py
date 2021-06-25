@@ -48,6 +48,8 @@ def main():
                     pr.currentLapTime += 1
                 if event.key == pygame.K_RIGHT:
                     pr.speed += 1
+                if event.key == pygame.K_t:
+                    pr.tyresInnerTemperature = (1,2,3,4)
                 if event.key == pygame.K_SPACE:
                     if pr.ersDeployMode == 2:
                         pr.ersDeployMode = 0

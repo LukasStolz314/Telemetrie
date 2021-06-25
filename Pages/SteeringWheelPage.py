@@ -25,8 +25,8 @@ class SteeringWheelPage(Page):
 
         WINDOW.fill(Colors.BLACK)
 
-        leftHeaderBoxValues = ("speed", "speed", "speed", "speed", "speed")
-        rightHeaderBoxValues = ("currentLapTime", "currentLapTime", "currentLapTime", "currentLapTime", "currentLapTime")
+        leftHeaderBoxValues = ("speed", "currentLapNum", "carPosition", "fuelRemainingLaps", "lapDistance")
+        rightHeaderBoxValues = ("bestLapTime", "tyresInnerTemperature")
 
         topRow = Row(WINDOW, 0, 0, [
             # Gear Widget
@@ -49,7 +49,7 @@ class SteeringWheelPage(Page):
         midColumn = Column(WINDOW, WIDTH//2, topRow.bottomPosition + HEIGHT//12, [
             # Delta Widget
             Label(WINDOW, 0, 0, WIDTH//9, HEIGHT//10,\
-                 None, Colors.GREEN, "speed", pr),
+                 None, Colors.GREEN, "currentLapTime", pr),
 
             # Overtake Widget
             OvertakeLabel(WINDOW, 0, HEIGHT//6, WIDTH//1.5, HEIGHT//20,\
@@ -64,10 +64,10 @@ class SteeringWheelPage(Page):
         bottomRow = Row(WINDOW, WIDTH//3.39, midColumn.bottomPosition + 1.5*(HEIGHT//12), [
             # D Widget
             ProgressBar(WINDOW, 0, 0, WIDTH//2.7, HEIGHT//50,\
-                Colors.BLACK, Colors.WHITE, "ersStoreEnergy", pr),
+                Colors.BLACK, Colors.WHITE, "ersHarvestedThisLapMGUK", pr),
 
             # W Widget     
             ProgressBar(WINDOW, WIDTH - WIDTH//1.695, 0, WIDTH//2.7, HEIGHT//50,\
-                Colors.BLACK, Colors.WHITE, "ersStoreEnergy", pr),
+                Colors.BLACK, Colors.WHITE, "ersHarvestedThisLapMGUH", pr),
         ])    	
         this.widgetList.append(bottomRow)
