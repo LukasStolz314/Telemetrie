@@ -1,3 +1,4 @@
+from PygameWidgets.Widgets.TimeLabel import TimeLabel
 import pygame
 from PygameWidgets.Widgets.Page import Page
 from PygameWidgets.Widgets.Column import Column 
@@ -5,7 +6,7 @@ from PygameWidgets.Widgets.Row import Row
 from PygameWidgets.Widgets.GearDisplay import GearDisplay
 from PygameWidgets.Widgets.ThrottleBar import ThrottleBar
 from PygameWidgets.Widgets.HeaderBox import HeaderBox
-from PygameWidgets.Widgets.Label import Label
+from PygameWidgets.Widgets.TimeLabel import TimeLabel
 from PygameWidgets.Widgets.ProgressBar import ProgressBar
 from PygameWidgets.Widgets.EngineSpeed import EngineSpeed
 from PygameWidgets.Widgets.OvertakeLabel import OvertakeLabel
@@ -25,7 +26,7 @@ class SteeringWheelPage(Page):
 
         WINDOW.fill(Colors.BLACK)
 
-        leftHeaderBoxValues = ("speed", "currentLapNum", "carPosition", "fuelRemainingLaps", "lastLapTime")
+        leftHeaderBoxValues = ("speed", "currentLapNum", "carPosition", "fuelRemainingLaps", "fuelInTank")
         rightHeaderBoxValues = ("bestLapTime", "tyresInnerTemperature")
 
         topRow = Row(WINDOW, 0, 0, [
@@ -35,11 +36,11 @@ class SteeringWheelPage(Page):
 
             # LeftHeaderBox Widget     
             HeaderBox(WINDOW, 10, 10, WIDTH//3, HEIGHT//3, \
-                Colors.BLACK, Colors.WHITE, leftHeaderBoxValues, pr, 2, 5, HEIGHT//12),
+                Colors.BLACK, Colors.WHITE, leftHeaderBoxValues, pr, 2, HEIGHT//12),
 
             # RightHeaderBox Widget
             HeaderBox(WINDOW, WIDTH - 10 - WIDTH//3, 10, WIDTH//3, HEIGHT//3,\
-                 Colors.BLACK, Colors.WHITE, rightHeaderBoxValues, pr, 2, 5, HEIGHT//12),
+                 Colors.BLACK, Colors.WHITE, rightHeaderBoxValues, pr, 2, HEIGHT//12),
         ])    	
         this.widgetList.append(topRow)
 
@@ -48,7 +49,7 @@ class SteeringWheelPage(Page):
 
         midColumn = Column(WINDOW, WIDTH//2, topRow.bottomPosition + HEIGHT//12, [
             # Delta Widget
-            Label(WINDOW, 0, 0, WIDTH//9, HEIGHT//10,\
+            TimeLabel(WINDOW, 0, 0, WIDTH//9, HEIGHT//10,\
                  None, Colors.GREEN, "currentLapTime", pr),
 
             # Overtake Widget
