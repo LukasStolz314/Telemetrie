@@ -40,7 +40,7 @@ class SteeringWheelPage(Page):
 
             # RightHeaderBox Widget
             HeaderBox(WINDOW, WIDTH - 10 - WIDTH//3, 10, WIDTH//3, HEIGHT//3,\
-                 Colors.BLACK, Colors.WHITE, rightHeaderBoxValues, pr, 2, HEIGHT//12),
+                 Colors.BLACK, Colors.WHITE, rightHeaderBoxValues, pr, 2, HEIGHT//12, True),
         ])    	
         this.widgetList.append(topRow)
 
