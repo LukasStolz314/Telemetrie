@@ -25,7 +25,7 @@ class SteeringWheelPage(Page):
 
         WINDOW.fill(Colors.BLACK)
 
-        leftHeaderBoxValues = ("speed", "currentLapNum", "carPosition", "fuelRemainingLaps", "lapDistance")
+        leftHeaderBoxValues = ("speed", "currentLapNum", "carPosition", "fuelRemainingLaps", "lastLapTime")
         rightHeaderBoxValues = ("bestLapTime", "tyresInnerTemperature")
 
         topRow = Row(WINDOW, 0, 0, [
