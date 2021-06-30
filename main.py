@@ -6,6 +6,14 @@ from python_f1_packetreader import packetreader
 from threading import Thread
 import logging
 import Utils.Colors as Colors
+import argparse
+
+parser = argparse.ArgumentParser(prog="F1-2020-Telemetry udp receiver", description="Collects telemetry data from F1 2020 udp server")
+parser.add_argument("-i", "--ip", help="Local ip address or listen on all interfaces e.g. 0.0.0.0", required=True)
+parser.add_argument("-p", "--port", help="Port of the udp server. Default: 20777", type=int, default=20777)
+parser.add_argument("-P", "--page", help="Starting Page 0 or 1", type=int, default=0)
+
+args = parser.parse_args()
 
 pygame.font.init()
 
@@ -20,13 +28,13 @@ pageList = [SteeringWheelPage(WINDOW), TyreTemperaturePage(WINDOW)]
 def main():
     logging.basicConfig(format="%(levelname)s - %(message)s", level=logging.DEBUG)
 
-    pr = packetreader.PacketReader('127.0.0.1', 20777)
+    pr = packetreader.PacketReader(args.ip, args.port)
     prThread = Thread(target=pr.run)
     prThread.start()
 
     logging.info("Packetreader thread started")
 
-    pageIndex = 1
+    pageIndex = args.page
     for page in pageList:
         page.build(pr)
 
@@ -38,21 +46,6 @@ def main():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_q:
                     run = False
-                if event.key == pygame.K_UP:
-                    pr.ersStoreEnergy += 1
-                if event.key == pygame.K_LEFT:
-                    pr.gear += 1
-                if event.key == pygame.K_DOWN:
-                    pr.currentLapTime += 1
-                if event.key == pygame.K_RIGHT:
-                    pr.speed += 1
-                if event.key == pygame.K_t:
-                    pr.tyresInnerTemperature = (1,2,3,4)
-                if event.key == pygame.K_SPACE:
-                    if pr.ersDeployMode == 2:
-                        pr.ersDeployMode = 0
-                    else:
-                        pr.ersDeployMode = 2
         pageIndex = draw_window(pageIndex)
     pygame.display.quit()
 

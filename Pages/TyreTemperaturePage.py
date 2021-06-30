@@ -30,6 +30,6 @@ class TyreTemperaturePage(Page):
         Tyre(WINDOW, WIDTH * 0.40, HEIGHT - HEIGHT//5, tireWidth, lineHeight, fontSize, 'RL', tyreInfoValues, pr), # Rear left tyre
         Tyre(WINDOW, WIDTH - WIDTH * 0.40, HEIGHT - HEIGHT//5, tireWidth, lineHeight, fontSize, 'RR', tyreInfoValues, pr), # Rear right tyre
         Tyre(WINDOW, WIDTH * 0.40, HEIGHT//5, tireWidth, lineHeight, fontSize, 'FL', tyreInfoValues, pr), # Front left tyre
-        Tyre(WINDOW, WIDTH - WIDTH *0.40, HEIGHT//5, tireWidth, lineHeight, fontSize, 'FR', tyreInfoValues, pr), # Front right tyre
+        Tyre(WINDOW, WIDTH - WIDTH * 0.40, HEIGHT//5, tireWidth, lineHeight, fontSize, 'FR', tyreInfoValues, pr), # Front right tyre
         ])
         this.widgetList.append(topRow)
