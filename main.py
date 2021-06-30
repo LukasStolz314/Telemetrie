@@ -26,7 +26,7 @@ def main():
 
     logging.info("Packetreader thread started")
 
-    pageIndex = 0
+    pageIndex = 1
     for page in pageList:
         page.build(pr)
 
@@ -58,7 +58,7 @@ def main():
 
 
 def draw_window(pageIndex):
-    if pageIndex < len(pageList) - 1 and pageIndex >= 0:
+    if pageIndex < len(pageList) and pageIndex >= 0:
         WINDOW.fill(Colors.BLACK)
         pageList[pageIndex].drawWidgets()
     
