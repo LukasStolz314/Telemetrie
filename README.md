@@ -75,3 +75,11 @@ python3 main.py -i 0.0.0.0 -p 20777
 Für eine ausführliche Dokumentation des Projekts besuchen Sie die [Wiki](https://github.com/isd-nunkesser/sd-2021-bolti/wiki).
 
 ---
+
+***
+
+## Arbeitsaufteilung
+Zusammen: Die Widget Struktur/Framework
+Luke Bocker: Das komplette Submodul f1_2020_packetreader
+Sebastian Grzebski: Das Tyre Widget und die TyreTemperaturePage
+Lukas Stolz: SteeringWheelPage und die restlichen einzelnen Widgets 
