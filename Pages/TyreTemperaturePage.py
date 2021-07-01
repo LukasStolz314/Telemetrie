@@ -22,9 +22,9 @@ class TyreTemperaturePage(Page):
 
         tyreInfoValues = ("tyresWear", "tyresInnerTemperature", "tyresSurfaceTemperature")
 
-        tireWidth = 100
-        lineHeight = 150
-        fontSize = 100
+        tireWidth = WIDTH//18
+        lineHeight = WIDTH //15
+        fontSize = WIDTH //18
 
         topRow = Row(WINDOW, 0, 0, [
         Tyre(WINDOW, WIDTH * 0.40, HEIGHT - HEIGHT//5, tireWidth, lineHeight, fontSize, 'RL', tyreInfoValues, pr), # Rear left tyre
