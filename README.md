@@ -20,6 +20,12 @@ Mit Hilfe eines Python-Programms verbindet sich der Rapsberry über eine UDP-Ver
 
 ## Installation
 
+Die Repository clonen:
+
+```bash
+git clone https://github.com/LukasStolz314/Telemetrie --recurse-submodules
+```
+
 ### Voraussetzungen
 
 - Python3
